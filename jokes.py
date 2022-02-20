@@ -4,7 +4,7 @@ import requests
 import json
 import random
 import time
-def right_now():
+def date_time():
     now = time.localtime()
     rightnow = time.strftime("%Y/%m/%d, %H:%M:%S", now)
     return rightnow
@@ -17,13 +17,13 @@ joke_num = result['total_jokes']
 if joke_num>0:
     results = random.choice(result['results'])
     answer = results["joke"]
-    with open("jokes.txt","a") as o:
-        o.write(f"[{right_now()}]\n")
-        o.write(f"I found {joke_num} jokes about \"{search}\", here is one for you:\n")
-        o.write(f"{answer}\n")
+    with open("jokes.txt","a") as openfile:
+        openfile.write(f"[{date_time()}]\n")
+        openfile.write(f"I found {joke_num} jokes about \"{search}\", here is one for you:\n")
+        openfile.write(f"{answer}\n")
 else:
-    with open("jokes.txt","a") as o:
-        o.write(f"[{right_now()}]\n")
-        o.write(f"There is no joke about \"{search}\"\n")
+    with open("jokes.txt","a") as openfile:
+        openfile.write(f"[{date_time()}]\n")
+        openfile.write(f"There is no joke about \"{search}\"\n")
 
 
