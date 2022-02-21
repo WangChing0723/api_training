@@ -17,13 +17,13 @@ joke_num = result['total_jokes']
 if joke_num>0:
     results = random.choice(result['results'])
     answer = results["joke"]
-    with open("jokes.txt","a") as openfile:
-        openfile.write(f"[{date_time()}]\n")
-        openfile.write(f"I found {joke_num} jokes about \"{search}\", here is one for you:\n")
-        openfile.write(f"{answer}\n")
+    with open("jokes.txt","a") as f:
+        f.write(f"[{date_time()}]\n")
+        f.write(f"I found {joke_num} jokes about \"{search}\", here is one for you:\n")
+        f.write(f"{answer}\n")
 else:
-    with open("jokes.txt","a") as openfile:
-        openfile.write(f"[{date_time()}]\n")
-        openfile.write(f"There is no joke about \"{search}\"\n")
+    with open("jokes.txt","a") as f:
+        f.write(f"[{date_time()}]\n")
+        f.write(f"There is no joke about \"{search}\"\n")
 
 
