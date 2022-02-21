@@ -14,7 +14,6 @@ search = input("Please enter what you want to search: ")
 response = requests.get(url, headers = {"Accept": "application/json"}, params = {"term": search})
 result = json.loads(response.text)
 joke_num = result['total_jokes']
-
 with open("jokes.txt","a") as f:
     if joke_num>0:
         results = random.choice(result['results'])
