@@ -14,15 +14,15 @@ search = input("Please enter what you want to search: ")
 response = requests.get(url, headers = {"Accept": "application/json"}, params = {"term": search})
 result = json.loads(response.text)
 joke_num = result['total_jokes']
-if joke_num>0:
-    results = random.choice(result['results'])
-    answer = results["joke"]
-    with open("jokes.txt","a") as f:
+
+with open("jokes.txt","a") as f:
+    if joke_num>0:
+        results = random.choice(result['results'])
+        answer = results["joke"]
         f.write(f"[{date_time()}]\n")
         f.write(f"I found {joke_num} jokes about \"{search}\", here is one for you:\n")
         f.write(f"{answer}\n")
-else:
-    with open("jokes.txt","a") as f:
+    else:
         f.write(f"[{date_time()}]\n")
         f.write(f"There is no joke about \"{search}\"\n")
 
